@@ -206,6 +206,10 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+.mobile-nav-controls {
+  display: none;
+}
+
 /* Hide social buttons when scrolled or away from Home */
 .social-links.hide-socials .social-btn,
 .navbar.is-scrolled .social-links .social-btn {
@@ -476,6 +480,14 @@
     padding: 10px 16px;
   }
 
+  /* Keep mobile header always pinned so hamburger menu is reachable anywhere */
+  .navbar.is-hidden {
+    transform: translateY(0) !important;
+  }
+  .navbar.is-hidden * {
+    pointer-events: auto;
+  }
+
   .nav-container {
     justify-content: flex-end;
     width: 100%;
@@ -571,30 +583,38 @@
   }
 
   .social-links {
-    position: static;
-    transform: none;
-    padding: 0;
-    gap: 8px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    margin-left: auto;
+    display: none !important;
+  }
+
+  .mobile-nav-controls {
     display: flex;
     align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    pointer-events: auto !important;
+    z-index: 1002;
   }
 
-  /* In mobile header bar, keep only WhatsApp and Menu toggle so it's spacious and clean */
-  .social-links .social-btn:not(.whatsapp-btn) {
-    display: none;
-  }
-
-  .social-btn.whatsapp-btn {
+  .mobile-control-btn {
+    pointer-events: auto !important;
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 38px;
     height: 38px;
+    border-radius: 50%;
     background: rgba(2, 7, 19, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.18);
     color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-control-btn:active {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
   }
 
   .mobile-toggle {
@@ -608,9 +628,11 @@
     background: rgba(2, 7, 19, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.18);
     cursor: pointer;
-    z-index: 60;
+    z-index: 1002;
     margin-left: 0;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    pointer-events: auto !important;
+    touch-action: manipulation;
   }
 
   .mobile-toggle.open .bar:nth-child(1) {
@@ -735,7 +757,7 @@
     padding: 8px 14px;
   }
 
-  .social-btn.whatsapp-btn,
+  .mobile-control-btn,
   .mobile-toggle {
     width: 36px;
     height: 36px;
