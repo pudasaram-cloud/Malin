@@ -56,9 +56,9 @@ export interface TopProjectPreview {
 }
 
 export const topProjectPreview: TopProjectPreview = {
-  title: 'PulseFlow Analytics',
-  url: '',
-  image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+  title: 'JDS Furniture Store',
+  url: 'https://jdsfurniture.vercel.app/',
+  image: projds1,
 };
 
 // Main Projects List

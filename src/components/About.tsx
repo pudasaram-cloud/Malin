@@ -27,7 +27,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex items-center gap-2 mb-2 select-none"
         >
@@ -41,7 +41,7 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="text-[32px] sm:text-[40px] md:text-[46px] font-extrabold tracking-tight text-neutral-900 leading-[1.15] mb-4 sm:mb-5"
         >
@@ -52,7 +52,7 @@ export default function About() {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.75, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           className="w-14 sm:w-16 h-[2.5px] bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full mx-auto mb-6 sm:mb-7 origin-center"
         />
@@ -62,7 +62,7 @@ export default function About() {
           <motion.p
             initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           >
             I am a passionate and motivated aspiring Software Developer with an interest in designing, 
@@ -73,7 +73,7 @@ export default function About() {
           <motion.p
             initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
           >
             I have an interest in both frontend and backend development, as well as system design, database 
@@ -89,7 +89,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 18, filter: 'blur(4px)' }}
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: false, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 sm:mt-9"
         >

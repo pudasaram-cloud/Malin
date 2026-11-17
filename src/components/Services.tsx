@@ -65,7 +65,7 @@ export default function Services(): React.ReactElement {
           <motion.h2
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="text-[32px] sm:text-[42px] md:text-[50px] font-extrabold tracking-tight text-neutral-900 leading-[1.14] mb-3"
           >
@@ -75,7 +75,7 @@ export default function Services(): React.ReactElement {
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className="text-neutral-600 text-[15px] sm:text-[16px] leading-relaxed"
           >
@@ -92,10 +92,14 @@ export default function Services(): React.ReactElement {
               <motion.div
                 key={service.id}
                 onClick={() => setActiveId(service.id)}
-                onMouseEnter={() => setActiveId(service.id)}
+                onMouseEnter={() => {
+                  if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+                    setActiveId(service.id);
+                  }
+                }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
                   duration: 0.7,
                   delay: index * 0.1,

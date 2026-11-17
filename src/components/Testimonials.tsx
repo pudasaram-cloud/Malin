@@ -32,7 +32,7 @@ export default function Testimonials(): React.ReactElement {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-left mb-8 sm:mb-10 md:mb-12"
         >
@@ -48,7 +48,7 @@ export default function Testimonials(): React.ReactElement {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="w-full bg-white rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-16 lg:p-20 shadow-[0_20px_60px_rgba(0,0,0,0.3)] flex flex-col justify-between min-h-[300px] sm:min-h-[360px] md:min-h-[380px]"
         >

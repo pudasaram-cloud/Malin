@@ -68,7 +68,7 @@ export default function Projects(): React.ReactElement {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex flex-col justify-center text-left pr-0 lg:pr-4"
           >
@@ -92,7 +92,7 @@ export default function Projects(): React.ReactElement {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/90 bg-[#0f172a] shadow-[0_12px_36px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)] transition-all duration-500 flex flex-col min-h-[320px] sm:min-h-[380px]"
           >
@@ -126,7 +126,7 @@ export default function Projects(): React.ReactElement {
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="w-full pt-4 sm:pt-6 flex flex-col gap-8 sm:gap-10"
         >
@@ -151,27 +151,25 @@ export default function Projects(): React.ReactElement {
               </span>
             </div>
 
-            {/* Slideshow Image Area */}
+            {/* Slideshow Image Area: Seamless CSS cross-fade to prevent blank/white flashes */}
             <div className="relative flex-1 w-full overflow-hidden bg-slate-950">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={`${currentProject.id}-${activeSlide}`}
-                  src={currentProject.slides[activeSlide]}
-                  alt={`${currentProject.title} screen ${activeSlide + 1}`}
-                  loading="eager"
+              {currentProject.slides.map((slide, idx) => (
+                <img
+                  key={`${currentProject.id}-${idx}`}
+                  src={slide}
+                  alt={`${currentProject.title} screen ${idx + 1}`}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
                   decoding="async"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="w-full h-full object-cover object-top"
+                  className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-500 ease-in-out ${
+                    activeSlide === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'translateZ(0)',
                   }}
                 />
-              </AnimatePresence>
+              ))}
 
               {/* Subtle Slide Indicators */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
