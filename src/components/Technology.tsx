@@ -150,10 +150,7 @@ export default function Technology(): React.ReactElement {
       className="relative w-full h-[220vh] bg-black"
     >
       {/* Pinned Sticky Viewport (Full Screen on Scroll) */}
-      <div
-        className="sticky top-0 w-full h-screen h-[100svh] overflow-hidden flex items-center justify-center bg-[#020713]"
-        style={{ transform: 'translateZ(0)', WebkitTransform: 'translateZ(0)' }}
-      >
+      <div className="sticky top-0 w-full h-screen h-[100svh] overflow-hidden flex items-center justify-center bg-[#020713]">
         
         {/* Ambient Cosmic Background Flare */}
         <div className="absolute w-[420px] sm:w-[700px] md:w-[900px] h-[350px] sm:h-[500px] rounded-full bg-gradient-to-r from-blue-600/20 via-indigo-500/15 to-cyan-400/20 blur-[140px] pointer-events-none" />
@@ -180,7 +177,8 @@ export default function Technology(): React.ReactElement {
           }}
           onClick={() => {
             if (containerRef.current) {
-              const top = containerRef.current.offsetTop;
+              const rect = containerRef.current.getBoundingClientRect();
+              const top = rect.top + window.scrollY;
               const height = containerRef.current.offsetHeight;
               window.scrollTo({
                 top: top + height * 0.55,
@@ -220,7 +218,6 @@ export default function Technology(): React.ReactElement {
             y: techY,
             pointerEvents: techPointer as any,
             willChange: 'transform, opacity',
-            transform: 'translateZ(0)',
           }}
           className="relative z-30 w-full max-w-[1400px] h-[100svh] sm:h-auto px-2 sm:px-6 lg:px-8 py-2.5 sm:py-0 flex flex-col justify-between sm:justify-center items-center"
         >
