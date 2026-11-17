@@ -8,37 +8,45 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
 
-      setIsScrolled(currentScrollY > 25);
+          setIsScrolled(currentScrollY > 25);
 
-      const sections = ['home', 'about', 'services', 'projects', 'contact'];
-      const scrollPosition = currentScrollY + 200;
+          const sections = ['home', 'about', 'services', 'projects', 'contact'];
+          const scrollPosition = currentScrollY + 200;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sections[i]);
-            break;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const el = document.getElementById(sections[i]);
+            if (el) {
+              const top = el.offsetTop;
+              if (scrollPosition >= top) {
+                setActiveSection(sections[i]);
+                break;
+              }
+            }
           }
-        }
-      }
 
-      // Hide navbar when scrolling down, show when scrolling up
-      if (currentScrollY <= 40) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY.current + 10) {
-        // Scrolling down
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY.current - 10) {
-        // Scrolling up
-        setIsVisible(true);
-      }
+          // Hide navbar when scrolling down, show when scrolling up
+          if (currentScrollY <= 40) {
+            setIsVisible(true);
+          } else if (currentScrollY > lastScrollY.current + 10) {
+            // Scrolling down
+            setIsVisible(false);
+          } else if (currentScrollY < lastScrollY.current - 10) {
+            // Scrolling up
+            setIsVisible(true);
+          }
 
-      lastScrollY.current = currentScrollY;
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

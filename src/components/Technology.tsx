@@ -150,7 +150,10 @@ export default function Technology(): React.ReactElement {
       className="relative w-full h-[220vh] bg-black"
     >
       {/* Pinned Sticky Viewport (Full Screen on Scroll) */}
-      <div className="sticky top-0 w-full h-screen h-[100svh] overflow-hidden flex items-center justify-center bg-[#020713]">
+      <div
+        className="sticky top-0 w-full h-screen h-[100svh] overflow-hidden flex items-center justify-center bg-[#020713]"
+        style={{ transform: 'translateZ(0)', WebkitTransform: 'translateZ(0)' }}
+      >
         
         {/* Ambient Cosmic Background Flare */}
         <div className="absolute w-[420px] sm:w-[700px] md:w-[900px] h-[350px] sm:h-[500px] rounded-full bg-gradient-to-r from-blue-600/20 via-indigo-500/15 to-cyan-400/20 blur-[140px] pointer-events-none" />
@@ -173,6 +176,7 @@ export default function Technology(): React.ReactElement {
             scale: introScale,
             filter: introBlur,
             pointerEvents: introPointer as any,
+            willChange: 'transform, opacity, filter',
           }}
           onClick={() => {
             if (containerRef.current) {
@@ -215,6 +219,8 @@ export default function Technology(): React.ReactElement {
             scale: techScale,
             y: techY,
             pointerEvents: techPointer as any,
+            willChange: 'transform, opacity',
+            transform: 'translateZ(0)',
           }}
           className="relative z-30 w-full max-w-[1400px] h-[100svh] sm:h-auto px-2 sm:px-6 lg:px-8 py-2.5 sm:py-0 flex flex-col justify-between sm:justify-center items-center"
         >
@@ -228,9 +234,12 @@ export default function Technology(): React.ReactElement {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover scale-105 transition-transform duration-1000"
+                preload="metadata"
+                className="w-full h-full object-cover scale-105"
                 style={{
                   filter: 'invert(1) hue-rotate(175deg) brightness(0.65) contrast(1.4) saturate(1.4)',
+                  transform: 'translateZ(0)',
+                  WebkitTransform: 'translateZ(0)',
                 }}
               />
               {/* Deep Black Gradient Overlay */}

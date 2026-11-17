@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, ChevronDown, Layers } from 'lucide-react';
 import {
@@ -11,17 +11,31 @@ export default function Projects(): React.ReactElement {
   const [activeProjectIdx, setActiveProjectIdx] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const [showMobileSpecs, setShowMobileSpecs] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const currentProject = myProjectsData[activeProjectIdx];
 
-  // Auto-switch slide images every 4 seconds
+  // Pause slideshow when section is offscreen to save mobile CPU/GPU
   useEffect(() => {
-    if (!currentProject || !currentProject.slides.length) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-switch slide images every 4 seconds ONLY when section is visible
+  useEffect(() => {
+    if (!isInView || !currentProject || !currentProject.slides.length) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % currentProject.slides.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [currentProject]);
+  }, [isInView, currentProject]);
 
   const handlePrevProject = () => {
     setActiveProjectIdx((prev) => (prev - 1 + myProjectsData.length) % myProjectsData.length);
@@ -40,7 +54,11 @@ export default function Projects(): React.ReactElement {
   }
 
   return (
-    <section id="projects" className="relative w-full bg-white py-14 sm:py-18 md:py-24 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative w-full bg-white py-14 sm:py-18 md:py-24 px-4 sm:px-6 lg:px-10 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14 md:gap-18">
         
         {/* Top Section: Left Header & Right Project Box 1 */}
@@ -96,6 +114,8 @@ export default function Projects(): React.ReactElement {
               <img
                 src={topProjectPreview.image}
                 alt={topProjectPreview.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
@@ -138,11 +158,18 @@ export default function Projects(): React.ReactElement {
                   key={`${currentProject.id}-${activeSlide}`}
                   src={currentProject.slides[activeSlide]}
                   alt={`${currentProject.title} screen ${activeSlide + 1}`}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.99 }}
-                  transition={{ duration: 0.55, ease: 'easeInOut' }}
+                  loading="eager"
+                  decoding="async"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   className="w-full h-full object-cover object-top"
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transform: 'translateZ(0)',
+                  }}
                 />
               </AnimatePresence>
 

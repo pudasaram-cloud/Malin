@@ -112,6 +112,8 @@ export default function Services(): React.ReactElement {
                   <img
                     src={service.bgImage}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className={`w-full h-full object-cover transition-transform duration-1000 ease-out ${
                       isActive ? 'scale-105 filter brightness-[0.52] contrast-105' : 'scale-100 filter brightness-[0.38] contrast-105'
                     }`}

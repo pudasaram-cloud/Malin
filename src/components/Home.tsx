@@ -5,7 +5,13 @@ export default function Home() {
     <section id="home" className="hero-wrapper">
       {/* Background portrait layer */}
       <div className="hero-bg-layer" aria-hidden="true">
-        <img src={heroBg} alt="Hero Portrait" className="hero-portrait-img" />
+        <img
+          src={heroBg}
+          alt="Hero Portrait"
+          className="hero-portrait-img"
+          decoding="async"
+          loading="eager"
+        />
         <div className="hero-gradient-overlay" />
       </div>
 
