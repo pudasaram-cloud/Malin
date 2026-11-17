@@ -78,7 +78,7 @@ export default function Contact(): React.ReactElement {
               placeholder="Enter your Name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[14.5px] sm:text-[15px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm"
+              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[16px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function Contact(): React.ReactElement {
               placeholder="example@gmail.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[14.5px] sm:text-[15px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm"
+              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[16px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm"
             />
           </div>
 
@@ -108,7 +108,7 @@ export default function Contact(): React.ReactElement {
               placeholder="Write your message here..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[14.5px] sm:text-[15px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm resize-none"
+              className="w-full px-5 py-4 rounded-2xl border border-neutral-300/90 text-neutral-900 placeholder:text-neutral-400 text-[16px] focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all bg-white shadow-sm resize-none"
             />
           </div>
 
