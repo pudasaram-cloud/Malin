@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Layers, Globe, Palette } from 'lucide-react';
+import prov1Img from '../assets/prov1.png';
 
 interface ServiceItem {
   id: string;
@@ -31,7 +32,7 @@ const SERVICES: ServiceItem[] = [
       'Fast, visually striking, and fully responsive websites & landing pages built to showcase your brand, engage customers, and turn visitors into clients.',
     buttonText: 'View Websites',
     icon: <Globe className="w-5 h-5 text-white/90" />,
-    bgImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    bgImage: prov1Img,
   },
   {
     id: 'ui-ux',

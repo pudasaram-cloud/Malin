@@ -13,6 +13,10 @@ import provel4 from '../assets/provel4.png';
 import provel5 from '../assets/provel5.png';
 import provel6 from '../assets/provel6.png';
 import provel7 from '../assets/provel7.png';
+import prov1 from '../assets/prov1.png';
+import prov2 from '../assets/prov2.png';
+import prov3 from '../assets/prov3.png';
+import prov4 from '../assets/prov4.png';
 
 
 // Technical specification item
@@ -64,6 +68,28 @@ export const topProjectPreview: TopProjectPreview = {
 // Main Projects List
 // You can add more projects by simply adding a new object to this array!
 export const myProjectsData: ProjectItem[] = [
+
+    {
+    id: 'VELORA',
+    title: 'VELORA',
+    url: '',
+    slides: [
+     prov1, prov2, prov3, prov4
+    ],
+    description:
+      'It is a software developed for managing garment orders, inventory, and customer details. It provides a centralized system for order tracking, inventory management, and customer relationship management, streamline workflow, reduce errors, and improve overall efficiency.',
+    buttonText: 'Discuss Your Project',
+    buttonLink: '#contact',
+    specs: [
+      { label: 'Frontend', value: 'HTML, CSS, JavaScript, jQuery' },
+      { label: 'Styling', value: 'Bootstrap 5' },
+      { label: 'Backend', value: 'FastAPI, Redis, ClickHouse' },
+      // { label: 'Programming Language', value: 'TypeScript, Python' },
+      // { label: 'Framework', value: 'React + Vite' },
+      // { label: 'Deployment', value: 'Google Cloud Run' },
+      // { label: 'Integration', value: 'Webhooks / REST API', fullWidth: true },
+    ],
+  },
   {
     id: 'jds-furniture',
     title: 'JDS FURNITURE',
